@@ -37,9 +37,7 @@ const WeatherApp = () => {
                          <li>city description :{data.weather[0].description} </li>
                      </ul>
                  </div>
-             )
-                
-             }
+             )}
           </div>
         </div>
       </div>

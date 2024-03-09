@@ -5,7 +5,8 @@ import About from "./Pages/About";
 import Menu  from "./Pages/Menu";
 import Product from "./Pages/Product";
 import Services from "./Pages/Services";
-import TaskRoutes from "./TaskPages/TaskRoutes"
+import TaskRoutes from "./TaskPages/TaskRoutes";
+import HooksRoutes from "./Hooks/HooksRoutes";
 import { createBrowserRouter } from "react-router-dom";
 
 const  routes = createBrowserRouter([
@@ -33,7 +34,13 @@ const  routes = createBrowserRouter([
    },
    {
     path : "/services",
-    element : <><Header/><Services/></>
+    element : <><Header/><Services/></>,
+    children : [
+      {
+          path : "hooks/*",
+          element: <><HooksRoutes/></>
+      }
+    ],
    }
 ])
 
