@@ -5,11 +5,11 @@ const MainContext = () => {
   return (
     <>
      MainContext
-     {/* <UserInfo>
+     <UserInfo>
        <DashBoard/>
-     </UserInfo> */}
+     </UserInfo>
 
-       <UserInfo/>
+       {/* <UserInfo/> */}
     </>
   );
 };
