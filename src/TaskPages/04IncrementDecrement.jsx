@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Increment = () => {
   const [state, setState] = useState(0);
+  const [data,setData] = useState({username : '',password : ''})
 
   return (
     <>
@@ -15,6 +16,13 @@ const Increment = () => {
       <button className="text-light bg-dark" onClick={() => {setState("0")}}>Reset</button>
      </div>
      </div>
+
+     <div>
+       {JSON.stringify(data)}
+      <input type="text" placeholder="Enter Your Username" name="username"  onChange={(e) => {setData({...data,username:e.target.value})}} />
+      <input type="text"  placeholder="Enter Your Password" name="password" onChange={(e) => {setData({...data, password: e.target.value})}}/>
+     </div>
+
     </>
   );
 };
