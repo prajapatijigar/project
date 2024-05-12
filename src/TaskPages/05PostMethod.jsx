@@ -18,7 +18,7 @@ const PostMethod = () => {
          const response =  await axios.post(`https://jsonplaceholder.typicode.com/users`, state)
         setStore(JSON.stringify(response.data));
     } catch (error) {
-         console.log("Error fetching data",error);
+         console.log("Error fetching data",error);  
     }
      setIsLoading(false)
 

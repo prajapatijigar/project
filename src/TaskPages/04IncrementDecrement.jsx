@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Increment = () => {
   const [state, setState] = useState(0);
-  const [data,setData] = useState({username : '',password : ''})
+  const [data,setData] = useState({})
 
   return (
     <>
@@ -19,8 +19,8 @@ const Increment = () => {
 
      <div>
        {JSON.stringify(data)}
-      <input type="text" placeholder="Enter Your Username" name="username"  onChange={(e) => {setData({...data,username:e.target.value})}} />
-      <input type="text"  placeholder="Enter Your Password" name="password" onChange={(e) => {setData({...data, password: e.target.value})}}/>
+      <input type="text" placeholder="Enter Your Username" name="username"  onChange={(e) => {setData({...data,[e.target.name]:e.target.value})}} />
+      <input type="text"  placeholder="Enter Your Password" name="password" onChange={(e) => {setData({...data, [e.target.name]: e.target.value})}}/>
      </div>
 
     </>
