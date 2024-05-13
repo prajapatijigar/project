@@ -6,6 +6,7 @@ const HooksList = () => {
         <>
              <ol>
                 <li><Link to = "usecontext">UseContext</Link></li>
+                <li><Link to = "useimperative">UseImperative</Link></li>
              </ol>
              <div>
                 <Outlet></Outlet>
