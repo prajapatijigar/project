@@ -20,7 +20,7 @@ const Increment = () => {
      <div>
        {JSON.stringify(data)}
       <input type="text" placeholder="Enter Your Username" name="username"  onChange={(e) => {setData({...data,[e.target.name]:e.target.value})}} />
-      <input type="text"  placeholder="Enter Your Password" name="password" onChange={(e) => {setData({...data, [e.target.name]: e.target.value})}}/>
+      <input type="password"  placeholder="Enter Your Password" name="password" onChange={(e) => {setData({...data, [e.target.name]: e.target.value})}}/>
      </div>
 
     </>

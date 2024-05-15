@@ -8,7 +8,7 @@ const User = () => {
             <UserCard/>
             {/* <br />
              {props.data}
-            <UserCard data = {props.data} /> */}
+               <UserCard data = {props.data} /> */}
         </>
     );
 };
