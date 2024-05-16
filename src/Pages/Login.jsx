@@ -4,6 +4,23 @@ import "./login.css";
 
 const Login = () => {
   const [state, setState] = useState(true);
+  const [formData,setFormData] = useState({})
+
+   const changeData = (e) => {
+    setFormData({...formData,[e.target.name]:e.target.value})
+    
+
+   }
+   
+   const loginHandler = (e) => {
+         console.log(formData);
+         setFormData('')
+   }
+    
+   const signInForm = () => {
+      console.log(formData);
+   }
+
   return (
     <>
       <div className="body-auth">
@@ -43,10 +60,11 @@ const Login = () => {
               <div className="form-item log-in">
                 <div className="table">
                   <div className="table-cell">
-                    <input name="username" placeholder="Username" type="text" />
-                    <input name="password" placeholder="Password" type="text" />
+                    <p>{JSON.stringify(formData)}</p>
+                    <input name="username" onChange={changeData} placeholder="Username" type="text" />
+                    <input name="password" onChange={changeData} placeholder="Password" type="password" />
                     {/* <input name="password" onChange={(event) => { setFormData((data) => ({ ...data.formData, [event.target.name]: event.target.value })) }} placeholder="Password" type="Password" /> */}
-                    <div className="btn-auth">Log in</div>
+                    <div className="btn-auth" onClick={loginHandler}>Log in</div>
                   </div>
                 </div>
               </div>
