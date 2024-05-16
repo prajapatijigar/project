@@ -13,8 +13,13 @@ const Login = () => {
    }
    
    const loginHandler = (e) => {
-         console.log(formData);
-         setFormData('')
+    if (!formData.username || !formData.password) {
+      alert("Please fill in both username and password fields.");
+  } else{
+      console.log(formData);
+      setFormData({});
+
+     }
    }
     
    const signInForm = () => {
@@ -84,7 +89,7 @@ const Login = () => {
                       placeholder="Password"
                       type="Password"
                     />
-                    <div className="btn-auth">Sign up</div>
+                    <div className="btn-auth" onClick={signInForm}>Sign up</div>
                   </div>
                 </div>
               </div>
