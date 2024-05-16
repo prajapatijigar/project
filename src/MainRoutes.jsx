@@ -8,6 +8,7 @@ import Services from "./Pages/Services";
 import TaskRoutes from "./TaskPages/TaskRoutes";
 import HooksRoutes from "./Hooks/HooksRoutes";
 import { createBrowserRouter } from "react-router-dom";
+import Login from "./Pages/Login";
 
 const  routes = createBrowserRouter([
    {
@@ -41,7 +42,12 @@ const  routes = createBrowserRouter([
           element: <><HooksRoutes/></>
       }
     ],
+   },
+   {
+    path : "/login",
+    element : <><Header/><Login/></>
    }
+
 ])
 
 export default routes;

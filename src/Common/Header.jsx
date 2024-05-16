@@ -45,6 +45,9 @@ export default function App() {
               <MDBNavbarItem className='active'>
                   <Link to="/services" className='nav-link'>Services</Link>
               </MDBNavbarItem>
+              <MDBNavbarItem className='active'>
+                  <Link to="/login" className='nav-link'>Login</Link>
+              </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
