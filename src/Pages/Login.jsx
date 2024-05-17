@@ -6,18 +6,31 @@ const Login = () => {
   const [state, setState] = useState(true);
   const [formData,setFormData] = useState({})
 
-   const changeData = (e) => {
+   const changeData = async (e) => {
     setFormData({...formData,[e.target.name]:e.target.value})
     
 
    }
    
-   const loginHandler = (e) => {
+   const loginHandler = async (e) => {
     if (!formData.username || !formData.password) {
       alert("Please fill in both username and password fields.");
   } else{
       console.log(formData);
-      setFormData({});
+         await fetch(`http://localhost:3005/users`,{
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({formData})
+        }).then(res => {
+          return res.json()
+        }).then((data) => {
+           console.log(data);
+           setFormData({});
+
+        })
 
      }
    }
