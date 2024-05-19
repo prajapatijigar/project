@@ -4,11 +4,10 @@ import "./login.css";
 
 const Login = () => {
   const [state, setState] = useState(true);
-  const [formData,setFormData] = useState({})
+  const [formData,setFormData] = useState({username: '',password: ''})
 
    const changeData = async (e) => {
     setFormData({...formData,[e.target.name]:e.target.value})
-    
 
    }
    
@@ -23,12 +22,12 @@ const Login = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({formData})
+          body: JSON.stringify(formData)
         }).then(res => {
           return res.json()
         }).then((data) => {
            console.log(data);
-           setFormData({});
+           setFormData({username: '',password: ''});
 
         })
 
