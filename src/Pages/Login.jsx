@@ -27,7 +27,7 @@ const Login = () => {
           return res.json()
         }).then((data) => {
            console.log(data);
-           setFormData({username: '',password: ''});
+           setFormData({});
 
         })
 
