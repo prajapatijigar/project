@@ -14,30 +14,118 @@
   "users": [
     {
       "id": "1",
-      "title": "a title",
-      "views": 100
+      "username": "govindprajapati",
+      "password": "govind1985",
+      "email": "govind@webplanners.com.au",
+      "fullName": "prajapati govind g."
     },
     {
-      "id": "3ffe",
-      "formData": {
-        "username": "jigar",
-        "password": "jigR2008"
-      }
+      "id": "2",
+      "username": "govindprajapati",
+      "password": "govind1985",
+      "email": "govind@webplanners.com.au",
+      "fullName": "prajapati govind g."
     },
     {
-      "id": "49ca",
-      "username": "jigar",
-      "password": "jigar2008"
+      "id": "3",
+      "username": "jigarprajapati",
+      "password": "jigs208#",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 1
     },
     {
-      "id": "a6b1",
-      "username": "jigar",
-      "password": "prajapati"
+      "id": "4",
+      "username": "jigarprajapati",
+      "password": "jigs208#",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "prajapati jigar somabhai"
     },
     {
-      "id": "4a1a",
-      "username": "jigar",
-      "password": "jgar2008"
+      "id": "5",
+      "username": "jigarprajapati",
+      "password": "jigs208#",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "prajapati jigar somabhai"
+    },
+    {
+      "id": "6",
+      "username": "jigarprajapati",
+      "password": "jigar",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "jigar prajapati"
+    },
+    {
+      "id": "7",
+      "username": "jigarprajapati",
+      "password": "dnngpd",
+      "email": "jaydesai3637@gmail.com",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "8",
+      "username": "jigarprajapati",
+      "password": "xdjgnszl",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "9",
+      "username": "jay",
+      "password": "jayesh",
+      "email": "jaydesai3637@gmail.com",
+      "fullName": "jaysdesai",
+      "role_id": 2
+    },
+    {
+      "id": "10",
+      "username": "jignesh",
+      "password": "jp",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "11",
+      "username": "jigarprajapati",
+      "password": "hbdfs",
+      "email": "prajapatibhavana2710@gmail.com",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "12",
+      "username": "jigarprajapati",
+      "password": "dibs",
+      "email": "govind@webplanners.com.au",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "13",
+      "username": "ff",
+      "password": "gdbs[ ",
+      "email": "d,b",
+      "fullName": "prajapati jigar somabhai",
+      "role_id": 2
+    },
+    {
+      "id": "14",
+      "username": "jay",
+      "password": "fvsd ab",
+      "email": "Prajapatijigar2008@gmail.com",
+      "fullName": "ff",
+      "role_id": 2
+    },
+    {
+      "id": "15",
+      "username": "fb s",
+      "password": "af",
+      "email": "vvs",
+      "fullName": "sav",
+      "role_id": 2
     }
   ],
   "comments": [

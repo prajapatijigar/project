@@ -1,42 +1,108 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useCookies } from 'react-cookie';
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./login.css";
 
 const Login = () => {
   const [state, setState] = useState(true);
-  const [formData,setFormData] = useState({username: '',password: ''})
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: "",
+    fullName: "",
+  });
+  const [error, setError] = useState(null);
+  const resetFormData = () => {
+    setFormData({
+      username: "",
+      password: "",
+      email: "",
+      fullName: "",
+    });
+    setError(null);
+  };
 
-   const changeData = async (e) => {
-    setFormData({...formData,[e.target.name]:e.target.value})
+  const changeData = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-   }
-   
-   const loginHandler = async (e) => {
-    if (!formData.username || !formData.password) {
-      alert("Please fill in both username and password fields.");
-  } else{
-      console.log(formData);
-         await fetch(`http://localhost:3005/users`,{
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        }).then(res => {
-          return res.json()
-        }).then((data) => {
-           console.log(data);
-           setFormData({});
+  const signUpForm = async (e) => {
+    e.preventDefault();
+    // console.log("formData", formData);
+     if ( ! formData.password || !formData.username || !formData.email || !formData.fullName) {
+           alert("Please Enter Your All Data")
+     }else{
 
-        })
+    try {
+      const response = await axios.get(
+        "http://localhost:3005/users"
+      );
 
-     }
-   }
+      const users = response.data;
+      const userExists = users.some(user => user.email === formData.email || user.username === formData.username);
+       if (userExists) {
+        alert("User with this email or password already exists");
+          return;
+       }
+
+      const lastId = users.length ? users[users.length - 1].id : 0;
+      const newUser = {
+        ...formData,
+        id: (parseInt(lastId) + 1).toString(),"role_id" : 2   
+      };
+
+       await axios.post("http://localhost:3005/users", newUser);
+      console.log("User added successfully:", newUser);
+      resetFormData()
+      setState(true)
+    } catch (error) {
+      console.log(error);
+    }
     
-   const signInForm = () => {
-      console.log(formData);
-   }
+  }
+   
+  };
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:3005/users?username=${formData.username}&password=${formData.password}`);
+       if (!formData.password && !formData.username) {
+            alert("enter your data")
+            return
+       }
+      const users = response.data;
+      // const user = users.find(
+      //   (user) =>
+      //     user.username === formData.username &&
+      //     user.password === formData.password
+      // );
+      const user = users[0];
+
+      if (users.length>0 && (user.username === formData.username && user.password === formData.password)) {
+          // console.log("Login successful:", user);
+                 console.log(user);
+
+        setCookie('user_role', user.role_id, { path: '/' });
+        setCookie('user_id', user.id, { path: '/' });
+        setFormData({ username: "", password: "" });
+        setError(null); // Clear any previous errors
+        if(user.role_id === 1){
+             navigate("/services")
+        }else if(user.role_id === 2){
+            navigate("/about")
+        }
+      } else {
+        setError("Invalid username or password");
+      }
+    
+    } catch (error) {
+      console.log("An error occurred:", error);
+    }
+  };
 
   return (
     <>
@@ -64,8 +130,6 @@ const Login = () => {
                 <div className="table">
                   <div className="table-cell">
                     <p>Don't have an account?</p>
-                    {/* {status} */}
-                    {/* {JSON.stringify(status)} */}
                     <div className="btn-auth" onClick={() => setState(false)}>
                       Sign up
                     </div>
@@ -77,31 +141,65 @@ const Login = () => {
               <div className="form-item log-in">
                 <div className="table">
                   <div className="table-cell">
-                    <p>{JSON.stringify(formData)}</p>
-                    <input name="username" onChange={changeData} placeholder="Username" type="text" />
-                    <input name="password" onChange={changeData} placeholder="Password" type="password" />
-                    {/* <input name="password" onChange={(event) => { setFormData((data) => ({ ...data.formData, [event.target.name]: event.target.value })) }} placeholder="Password" type="Password" /> */}
-                    <div className="btn-auth" onClick={loginHandler}>Log in</div>
+                    <input
+                      name="username"
+                      value={formData.username}
+                      onChange={changeData}
+                      placeholder="Username"
+                      type="text"
+                    />
+                    <input
+                      name="password"
+                      value={formData.password}
+                      onChange={changeData}
+                      placeholder="Password"
+                      type="password"
+                    />
+                    {error && <p className="error">{error}</p>}
+                    <div className="btn-auth" onClick={loginHandler}>
+                      Log in
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="form-item sign-up">
                 <div className="table">
                   <div className="table-cell">
-                    {/* <input name="email" onChange={ (event)=>{  setFormData((data)=>({formData:{...data.formData,[event.target.name]:event.target.value}})) }} placeholder="Email" type="text" /> */}
-                    <input name="email" placeholder="Email" type="text" />
+                    <input
+                      name="email"
+                      value={formData.email}
+                      onChange={changeData}
+                      placeholder="Email"
+                      type="text"
+                       required
+                    />
                     <input
                       name="fullName"
-                      placeholder="Full Name"
+                      value={formData.fullName}
+                      onChange={changeData}
+                      placeholder="FullName"
                       type="text"
+                      required
                     />
-                    <input name="username" placeholder="Username" type="text" />
+                    <input
+                      name="username"
+                      value={formData.username}
+                      onChange={changeData}
+                      placeholder="Username"
+                      type="text"
+                      required
+                    />
                     <input
                       name="password"
+                      value={formData.password}
+                      onChange={changeData}
                       placeholder="Password"
-                      type="Password"
+                      type="password"
+                      required
                     />
-                    <div className="btn-auth" onClick={signInForm}>Sign up</div>
+                    <div className="btn-auth" onClick={signUpForm}>
+                      Sign up
+                    </div>
                   </div>
                 </div>
               </div>
