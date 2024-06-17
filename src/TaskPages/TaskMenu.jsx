@@ -20,6 +20,9 @@ const TaskMenu = () => {
         <li>
           <Link to="postmethod">Post Method Using axios</Link>
         </li>
+        <li>
+          <Link to="crudoperation">Crud Application</Link>
+        </li>
       </ol>
       <div>
         <Outlet></Outlet>

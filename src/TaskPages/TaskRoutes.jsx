@@ -6,6 +6,7 @@ import WeatherApp from "./02WeatherApp";
 import RenderList from './03RenderList';
 import Increment from "./04IncrementDecrement";
 import PostMethod from "./05PostMethod";
+import CrudApplication from './06CRUDApplication';
 
 
 const TaskRoutes = () => {
@@ -34,6 +35,10 @@ const TaskRoutes = () => {
                 {
                     path: "postmethod",
                     element: <PostMethod/>
+                },
+                {
+                    path:"crudoperation",
+                    element:<CrudApplication/>
                 }
             ]
         }

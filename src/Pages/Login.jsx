@@ -32,7 +32,7 @@ const Login = () => {
   const signUpForm = async (e) => {
     e.preventDefault();
     // console.log("formData", formData);
-     if ( ! formData.password || !formData.username || !formData.email || !formData.fullName) {
+     if ( !formData.password || !formData.username || !formData.email || !formData.fullName) {
            alert("Please Enter Your All Data")
      }else{
 
