@@ -33,13 +33,13 @@
   font-size: 20px;
   padding: 20px 15px;
 }
-.shopping li:nth-child(2){
-     background-color: #da0037;
+.ShopIcon {
+  background-color: #da0037;
 }
-.shopping li:nth-child(2) a{
-    color: white;
-} 
-
+.ShopIcon a {
+  color: white !important;
+  
+}
 .shopping a {
   text-decoration: none;
   color: black;

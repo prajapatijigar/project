@@ -1,0 +1,85 @@
+.parentcart {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns layout */
+    gap: 30px;
+}
+
+.mdbcard {
+    width: 100%; /* Full width of the column */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow for better visuals */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures content doesn't overflow */
+    transition: transform 0.2s, border 0.2s; /* Smooth hover effect */
+    position: relative; /* Required for inner elements */
+    border: 2px solid transparent; /* Default border to avoid layout shift on hover */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+.allproduct {
+    padding: 100px 20px;
+
+}
+.allproduct h2 {    
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.mdbcard:hover {
+    border: 2px solid black;
+}
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    padding: 20px;
+}
+
+.mdbcard h5 {
+    font-size: 14px; /* Smaller font size */
+    line-height: 1.2; /* Smaller line height */
+    text-align: start;
+    flex-grow: 0;
+    height: 20px;
+    color: #333;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: 100%;
+    margin: 5px 0; /* Adjust spacing around the title */
+}
+
+.mdbcard img {
+    width: 120px;
+    height: 155px;
+    object-fit: contain; 
+    transition: transform 0.5s; 
+}
+
+.mdbcard img:hover, .mdbcard img.active {
+    transform: scale(1.05); /* Scale image on hover */
+}
+
+.mdbcard-body {
+    padding: 10px;
+    text-align: center; /* Center text for better alignment */
+    flex-grow: 1; /* Ensure the body takes up remaining space */
+}
+.cartbody {
+     display: flex;
+     gap: 10px;
+     padding: 0;
+}
+.basketbtn{
+      padding: 5px 10px;
+      text-align: center;
+      height: 25px;
+}
+
+.mdbcard-text {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowed text */
+    margin-bottom: 10px; /* Bottom space */
+}
+    

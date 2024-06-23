@@ -1,14 +1,16 @@
 import React from "react";
 import CategoriesCart from "./CategoriesCart";
-import Styles from "../css/categories.module.css";
+import Styles2 from "../css/categories.module.css";
 
 const Categories = () => {
   return (
     <>
-      <CategoriesCart />
-      <CategoriesCart />
-      <CategoriesCart />
-      <CategoriesCart />
+      <ul className={Styles2.categories}>
+        <CategoriesCart />
+        <CategoriesCart />
+        <CategoriesCart />
+        <CategoriesCart />
+      </ul>
     </>
   );
 };
