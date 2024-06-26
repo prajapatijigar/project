@@ -1,0 +1,50 @@
+.detailscard{
+   width: 50%;
+   height: auto;
+   margin: 0 auto;
+   padding:  100px 0;
+   display: flex;
+   flex-direction: column;
+}
+.firstpart{
+   display: flex;
+}
+.loading{
+   margin-top:30px;
+   text-align: center;
+   font-size: 30px;
+}
+
+.detailscardtextbody{
+    display: flex;  
+    gap: 5px;
+    flex-direction: column;
+    padding: 0 15px;
+}
+.detailscardtextbody h1{
+    font-size: 20px;
+    text-transform: uppercase;
+    line-height: 23px;
+} 
+.detailscardtextbody p{
+   font-size: 25px;
+   text-transform: uppercase;
+}
+.detailsimg{
+  max-width: 300px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+   border: 1px solid rgba(0, 0, 0, 0.091);
+   /* height:  auto; */
+}
+.detailsimg img {
+   width: 100%;
+   height: auto;
+}
+.secondpart{ padding: 20px 0;}
+.secondpart h2{
+  font-size: 20px;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+     width: 100%;
+}

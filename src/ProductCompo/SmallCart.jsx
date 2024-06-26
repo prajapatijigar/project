@@ -5,24 +5,27 @@ import {
   MDBCardImage,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
   MDBCardLink,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
-const Cart = (props) => {
+const Cart = ({ img, title, rate, onHandler, id }) => {
   return (
-    <MDBCard className={Styles.mdbcard} onClick={() => { console.log("called");}}>
-      <MDBCardImage position='top' alt={props.title} src={props.img} />
-      <MDBCardBody className={Styles['mdbcard-body']}>
-        <MDBCardTitle>{props.title}</MDBCardTitle>
-        {/* <MDBCardText className={Styles['mdbcard-text']}>{props.content}</MDBCardText> */}
-      </MDBCardBody>
-      <MDBCardBody className={Styles.cartbody}>
-        <MDBCardLink href='#' className={Styles.rate}>Rs.{props.rate}</MDBCardLink>
-        <MDBBtn href='#' className={Styles.basketbtn}>Add To Basket</MDBBtn>
-      </MDBCardBody>
-    </MDBCard>
+    <div onClick={onHandler}>
+      <Link to={`/product/${id}`} className={Styles.link}>
+        <MDBCard className={Styles.mdbcard}>
+          <MDBCardImage position='top' alt={title} src={img} />
+          <MDBCardBody className={Styles['mdbcard-body']}>
+            <MDBCardTitle>{title}</MDBCardTitle>
+          </MDBCardBody>
+          <MDBCardBody className={Styles.cartbody}>
+            <MDBCardLink href='#' className={Styles.rate}>Rs.{rate}</MDBCardLink>
+            <MDBBtn href='#' className={Styles.basketbtn}>Add To Basket</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
+      </Link>
+    </div>
   );
 };
 

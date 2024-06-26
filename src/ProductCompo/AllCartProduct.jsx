@@ -1,15 +1,17 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Styles from "../css/cart.module.css";
 import Cart from "./SmallCart";
+import { useNavigate } from "react-router-dom";
 
 const AllProduct = () => {
   const [products, setProducts] = useState(null);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios('https://fakestoreapi.com/products/')
+    axios("https://fakestoreapi.com/products/")
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
@@ -20,6 +22,11 @@ const AllProduct = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleProductClick = (id) => {
+    // navigate(`/product/${id}`);
+    navigate(`/product/${id}`)
+  };
 
   return (
     <div className={Styles.allproduct}>
@@ -34,14 +41,15 @@ const AllProduct = () => {
             products.map((product) => (
               <Cart
                 key={product.id}
+                id={product.id}
                 img={product.image}
                 title={product.title}
-                content={product.description}
                 rate={product.price}
+                onHandler={() => handleProductClick(product.id)}
               />
             ))
           ) : (
-            <div className={Styles.loading}>No products available</div>
+            <div className={Styles.loading}>No Products Available</div>
           )}
         </section>
       )}
