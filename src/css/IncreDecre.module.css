@@ -1,0 +1,8 @@
+.plusminusicon{
+     display: flex;
+     border: 1px solid rgba(0, 0, 0, 0.368);
+     padding: 0 5px;
+     border-radius: 10px;
+     align-items: center;
+     gap: 20px;
+}

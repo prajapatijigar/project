@@ -5,9 +5,11 @@
   import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
   import { Link } from "react-router-dom";
   import Categories from "./Categories";
+  import MenuList from "./MenuList";
 
   const ProductHeader = () => {
     const [showCategories, setShowCategories] = useState(false);
+    const [isShowList,setIsShowList] = useState(false)
 
     const handleMouseEnter = () => {
       setShowCategories(true);
@@ -17,11 +19,15 @@
       setShowCategories(false);
     };
 
+     const onListHandle = () => {
+      setIsShowList(true)
+     }
+
     return (
       <div className={Styles.sansserif}>
         <header className={Styles.ProductHeader}>
           <div className={Styles.navContainer}>
-            <Link to="/">
+            <Link to="/product">
               <div className={Styles.productlogo}>
                 <h2>online-store</h2>
               </div>
@@ -39,11 +45,14 @@
                        <Categories/>
                   </div>
                 </li>
-                <li className={Styles.ShopIcon}>
+                <li className={Styles.ShopIcon} onClick={onListHandle}>
                   <Link to="#">
                     <FontAwesomeIcon icon={faShoppingCart} />
                   </Link>
                 </li>
+                <div className={`${isShowList ? Styles.listmenushow : Styles.listmenuhide}`}>
+                 <MenuList/> 
+                </div>
               </ul>
             </div>
           </div>

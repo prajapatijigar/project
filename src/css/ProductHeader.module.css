@@ -27,7 +27,6 @@
   margin: 0;
   padding: 0;
 }
-
 .shopping li {
   position: relative;
   font-size: 20px;
@@ -35,6 +34,7 @@
 }
 .ShopIcon {
   background-color: #da0037;
+  cursor: pointer; 
 }
 .ShopIcon a {
   color: white !important;
@@ -49,5 +49,14 @@
   color: #007bff;
 }
 
-
+.listmenushow{
+   display: flex;
+   position: absolute;
+   z-index: 1000;
+   top: 200px;
+   right: 200px;
+}
+.listmenuhide{
+   display: none;
+}
 
