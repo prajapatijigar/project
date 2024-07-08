@@ -5,7 +5,7 @@ const ProductFooter = () => {
     return (
         <>
            <footer>
-             
+                
            </footer>
         </>
     );

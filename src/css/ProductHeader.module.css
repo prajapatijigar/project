@@ -51,7 +51,7 @@
 
 .listmenushow{
    display: flex;
-   position: absolute;
+   position: relative ;
    z-index: 1000;
    top: 200px;
    right: 200px;
@@ -59,4 +59,23 @@
 .listmenuhide{
    display: none;
 }
+.bodyOverlay {
+  background-color: #00000024;
+  position: relative;
+  z-index: 10001;
+}
+.itemcountnum{
+   position: absolute;
+   font-size: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   top: 8px;
+   left: 25px;
+   border-radius: 50%;
+   width: 25px;
+   height: 25px;
+   background-color: white;
+}
+
 

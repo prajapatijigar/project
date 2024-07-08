@@ -1,0 +1,44 @@
+.menulistbg {
+     background-color: white;
+     display: flex;
+     position: fixed;
+     z-index: 1000;
+     top: 0;
+     right: 0;
+     width: 400px;
+     height: 100vh;
+     transition: transform 0.3s ease-in-out;
+ }
+ 
+ .show {
+     display: flex;
+     transform: translateX(0);
+ }
+ 
+ .hide {
+     display: flex;
+     transform: translateX(100%);
+ }
+ 
+ .closebtn {
+     cursor: pointer;
+     background-color: #da0037;
+     width: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 30px;
+     border-radius:5px;
+     text-align: center;
+     color: white;
+     padding: 5px;
+ }
+ .countitem{
+    display: flex;
+    padding: 10px;
+    height: 90px;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+ }
+ 

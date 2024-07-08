@@ -70,11 +70,6 @@
      gap: 10px;
      padding: 0;
 }
-.basketbtn{
-      padding: 5px 10px;
-      text-align: center;
-      height: 25px;
-}
 
 .mdbcard-text {
     white-space: nowrap; /* Prevents text from wrapping */

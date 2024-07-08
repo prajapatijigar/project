@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
@@ -8,13 +8,14 @@ import { faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import Button from "./AddBasketButton";
 import IncreDecre from "./IncreDecre";
 import Styles from "../css/DetailsCard.module.css";
-
+import { CartContext } from "./CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {addToCart} = useContext(CartContext)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -39,7 +40,6 @@ const ProductDetail = () => {
     for (let i = 0; i < 5; i++) {
       if (rate >= i + 1) {
         arr.push(<FontAwesomeIcon icon={fasStar} key={i} />);
-         console.log(rate);
       } else if (rate >= i) {
         arr.push(<FontAwesomeIcon icon={faStarHalfStroke} key={i} />);
       } else {
@@ -69,10 +69,9 @@ const ProductDetail = () => {
           <span>{star(product.rating.rate)}</span>
           <p>${product.price} <span>try</span></p>
           <div className={Styles.IncrementBtn}>
-             <IncreDecre />
-            <Button>add to basket</Button>
-           </div>
-          
+            <IncreDecre />
+            <Button onAddHandler={addToCart}>Add to Basket</Button>
+          </div>
         </div>
       </div>
       <div className={Styles.secondpart}>

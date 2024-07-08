@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Styles from '../css/cart.module.css';
 import {
   MDBCard,
@@ -8,9 +8,12 @@ import {
   MDBCardLink,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import { CartContext } from './CartContext';
 import { Link } from 'react-router-dom';
+import Button from './AddBasketButton';
 
 const Cart = ({ img, title, rate, onHandler, id }) => {
+    const {addToCart} = useContext(CartContext)
   return (
     <div onClick={onHandler}>
       <Link to={`/product/${id}`} className={Styles.link}>
@@ -21,7 +24,7 @@ const Cart = ({ img, title, rate, onHandler, id }) => {
           </MDBCardBody>
           <MDBCardBody className={Styles.cartbody}>
             <MDBCardLink href='#' className={Styles.rate}>Rs.{rate}</MDBCardLink>
-            <MDBBtn href='#' className={Styles.basketbtn}>Add To Basket</MDBBtn>
+              <Button onAddHandler={addToCart}>Add TO Basket</Button>
           </MDBCardBody>
         </MDBCard>
       </Link>

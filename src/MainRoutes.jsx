@@ -19,6 +19,8 @@ import Registration from "./Pages/LoginCompo/Registration";
 import PrivateRoute from "./PrivateRoute";
 import ProductDetail from "./ProductCompo/ProductDetails";
 import ProductHeader from "./ProductCompo/ProductHeader";
+import {CartProvider} from "./ProductCompo/CartContext";
+
 
 const routes = createBrowserRouter([
   {
@@ -60,12 +62,18 @@ const routes = createBrowserRouter([
       <>
         <Header />
         <Product />
+        
       </>
     )
   },
   {
     path: "/product/:id",
-    element  : <><Header /><ProductHeader/><ProductDetail /></>
+    element  : <><Header />
+    <CartProvider>
+    <ProductHeader/>
+    <ProductDetail/>
+    </CartProvider>
+    </>
   },
   {
     path: "/services",

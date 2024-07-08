@@ -39,7 +39,7 @@ const AllProduct = () => {
         <section className={Styles.parentcart}>
           {products && products.length > 0 ? (
             products.map((product) => (
-              <Cart
+              <Cart      
                 key={product.id}
                 id={product.id}
                 img={product.image}

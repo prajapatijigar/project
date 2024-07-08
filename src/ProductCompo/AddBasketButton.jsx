@@ -1,18 +1,13 @@
-import React from 'react';
-import Styles from "../css/DetailsCard.module.css"; 
-import {
-    MDBBtn
-  } from 'mdb-react-ui-kit';
-  
+  import React, { forwardRef } from 'react';
+  import Styles from "../css/DetailsCard.module.css"; 
+  import { MDBBtn } from 'mdb-react-ui-kit';
 
-const Button = ({children}) => {
+  const Button = ({ children, onAddHandler }) => {
     return (
-        <>
-            <div>
-            <MDBBtn href='#' className={Styles.basketbtn}>{children}</MDBBtn>
-            </div>
-        </>
+      <div>
+        <MDBBtn onClick={onAddHandler} href='#' className={Styles.basketbtn}>{children}</MDBBtn>
+      </div>
     );
-};
+  };
 
-export default Button;
+  export default Button;
