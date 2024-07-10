@@ -80,7 +80,7 @@ const ProductHeader = () => {
                 <Link to="#">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </Link>
-                <div className={Styles.itemcountnum}>{cartItems}</div>
+                <div className={Styles.itemcountnum}>{cartItems.length}</div>
               </li>
               <div ref={menuRef}>
                 <MenuList menuShow={menuShow} onCloseHandle={onCloseHandle} />

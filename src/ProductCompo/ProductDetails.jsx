@@ -12,17 +12,15 @@ import { CartContext } from "./CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const { product, setProduct } = useContext(CartContext); // Using the context
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const {addToCart} = useContext(CartContext)
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
         setProduct(response.data);
-        console.log(response.data.rating.rate);
       } catch (error) {
         console.error("There was an error fetching the data!", error);
         setError("There was an error fetching the data!");
@@ -32,7 +30,7 @@ const ProductDetail = () => {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [id, setProduct]);
 
   const star = (rate) => {
     const arr = [];
@@ -70,7 +68,7 @@ const ProductDetail = () => {
           <p>${product.price} <span>try</span></p>
           <div className={Styles.IncrementBtn}>
             <IncreDecre />
-            <Button onAddHandler={addToCart}>Add to Basket</Button>
+            <Button product={product} />
           </div>
         </div>
       </div>

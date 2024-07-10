@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Styles from "../css/cart.module.css";
 import Cart from "./SmallCart";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "./CartContext";
 
 const AllProduct = () => {
   const [products, setProducts] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {addToCart} = useContext(CartContext) 
 
   useEffect(() => {
     axios("https://fakestoreapi.com/products/")
@@ -17,7 +19,6 @@ const AllProduct = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("There was an error fetching the data!", error);
         setError("There was an error fetching the data!");
         setLoading(false);
       });
@@ -25,7 +26,7 @@ const AllProduct = () => {
 
   const handleProductClick = (id) => {
     // navigate(`/product/${id}`);
-    navigate(`/product/${id}`)
+     navigate(`/product/${id}`)
   };
 
   return (
@@ -46,6 +47,7 @@ const AllProduct = () => {
                 title={product.title}
                 rate={product.price}
                 onHandler={() => handleProductClick(product.id)}
+
               />
             ))
           ) : (

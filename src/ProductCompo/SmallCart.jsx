@@ -12,11 +12,13 @@ import { CartContext } from './CartContext';
 import { Link } from 'react-router-dom';
 import Button from './AddBasketButton';
 
-const Cart = ({ img, title, rate, onHandler, id }) => {
-    const {addToCart} = useContext(CartContext)
+const Cart = ({ img, title, rate, onHandler, id,handleAddToCart}) => {
+  const { addToCart } = useContext(CartContext);
+   
+
   return (
     <div onClick={onHandler}>
-      <Link to={`/product/${id}`} className={Styles.link}>
+      <Link className={Styles.link}>
         <MDBCard className={Styles.mdbcard}>
           <MDBCardImage position='top' alt={title} src={img} />
           <MDBCardBody className={Styles['mdbcard-body']}>
@@ -24,7 +26,7 @@ const Cart = ({ img, title, rate, onHandler, id }) => {
           </MDBCardBody>
           <MDBCardBody className={Styles.cartbody}>
             <MDBCardLink href='#' className={Styles.rate}>Rs.{rate}</MDBCardLink>
-              <Button onAddHandler={addToCart}>Add TO Basket</Button>
+            <Button onClick={handleAddToCart}>Add To Basket</Button>
           </MDBCardBody>
         </MDBCard>
       </Link>
