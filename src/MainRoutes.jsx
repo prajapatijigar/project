@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
+    createBrowserRouter,
+    RouterProvider,
+    Route,
 } from "react-router-dom";
 import Header from "./Common/Header";
 import Home from "./Pages/Home";
@@ -19,105 +19,117 @@ import Registration from "./Pages/LoginCompo/Registration";
 import PrivateRoute from "./PrivateRoute";
 import ProductDetail from "./ProductCompo/ProductDetails";
 import ProductHeader from "./ProductCompo/ProductHeader";
-import {CartProvider} from "./ProductCompo/CartContext";
-
+import CategoriesMenuCart from "./ProductCompo/CategoriesMenuCart";
+import { CartProvider } from "./ProductCompo/CartContext";
 
 const routes = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <PrivateRoute>
-        <Header />
-        <Home />
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <Header />
-        <About />
-      </>
-    ),
-  },
-  {
-    path: "/menu",
-    element: (
-      <>
-        <Header />
-        <Menu />
-      </>
-    ),
-    children: [
-      {
-        path: "task/*",
-        element: <TaskRoutes />,
-      },
-    ],
-  },
-  {
-    path: "/product",
-    element: (
-      <>
-        <Header />
-        <Product />
-        
-      </>
-    )
-  },
-  {
-    path: "/product/:id",
-    element  : <><Header />
-    <CartProvider>
-    <ProductHeader/>
-    <ProductDetail/>
-    </CartProvider>
-    </>
-  },
-  {
-    path: "/services",
-    element: (
-      <>
-        <Header />
-        <Services />
-      </>
-    ),
-    children: [
-      {
-        path: "hooks/*",
-        element: <HooksRoutes />,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: (
-      <>
-        <Header />
-        <Login />
-      </>
-    ),
-  },
-  {
-    path: "/parentlogin",
-    element: (
-      <>
-        <Header />
-        <ParentLogin />
-      </>
-    ),
-    children: [
-      {
-        path: "logincompo",
-        element: <LoginCompo />,
-      },
-      {
-        path: "register",
-        element: <Registration />,
-      },
-    ],
-  },
+    {
+        path: "/",
+        element: (
+            <PrivateRoute>
+                <CartProvider>
+                    <Header />
+                    <Home />
+                </CartProvider>
+            </PrivateRoute>
+        ),
+    },
+    {
+        path: "/about",
+        element: (
+            <CartProvider>
+                <Header />
+                <About />
+            </CartProvider>
+        ),
+    },
+    {
+        path: "/menu",
+        element: (
+            <CartProvider>
+                <Header />
+                <Menu />
+            </CartProvider>
+        ),
+        children: [
+            {
+                path: "task/*",
+                element: <TaskRoutes />,
+            },
+        ],
+    },
+    {
+        path: "/product",
+        element: (
+            <CartProvider>
+                <Header />
+                <Product />
+            </CartProvider>
+        )
+    },
+    {
+        path: "/categories/:slug",
+        element: (
+            <CartProvider>
+                <Header />
+                <CategoriesMenuCart />
+                
+            </CartProvider>
+        )
+    },
+    {
+        path: "/product/:id",
+        element: (
+            <CartProvider>
+                <Header />
+                <ProductHeader />
+                <ProductDetail />
+            </CartProvider>
+        )
+    },
+    {
+        path: "/services",
+        element: (
+            <CartProvider>
+                <Header />
+                <Services />
+            </CartProvider>
+        ),
+        children: [
+            {
+                path: "hooks/*",
+                element: <HooksRoutes />,
+            },
+        ],
+    },
+    {
+        path: "/login",
+        element: (
+            <CartProvider>
+                <Header />
+                <Login />
+            </CartProvider>
+        ),
+    },
+    {
+        path: "/parentlogin",
+        element: (
+            <CartProvider>
+                <Header />
+                <ParentLogin />
+            </CartProvider>
+        ),
+        children: [
+            {
+                path: "logincompo",
+                element: <LoginCompo />,
+            },
+            {
+                path: "register",
+                element: <Registration />,
+            },
+        ],
+    },
 ]);
 
 export default routes;

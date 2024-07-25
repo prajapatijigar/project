@@ -15,7 +15,6 @@ const ProductHeader = () => {
   const menuRef = useRef(null);
   const { cartItems } = useContext(CartContext);
 
-   console.log("cartitems",cartItems);
 
   const handleMouseEnter = () => {
     setShowCategories(true);
@@ -27,7 +26,6 @@ const ProductHeader = () => {
 
   const onListHandle = () => {
     setMenuShow(true);
-    console.log("called");
     document.body.style.backgroundColor = "#00000024";
   };
 

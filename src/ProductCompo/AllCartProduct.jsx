@@ -17,6 +17,7 @@ const AllProduct = () => {
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
+         console.log("response",response);
       })
       .catch((error) => {
         setError("There was an error fetching the data!");

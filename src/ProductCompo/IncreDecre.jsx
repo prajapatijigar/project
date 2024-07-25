@@ -1,30 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Styles from "../css/IncreDecre.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "./CartContext";
 
-const IncreDecre = () => {
-  const [state,setState] = useState(0) 
+const IncreDecre = ({ id }) => {
+  const { counts, setCounts } = useContext(CartContext);
 
-  const decrement = () => {
-    if (state > 0) {
-      setState(state - 1);
-    }
+  const handleIncrement = () => {
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      [id]: (prevCounts[id] || 1) + 1,
+    }));
   };
 
-  const increment = () => {
-    setState(state + 1);
+  const handleDecrement = () => {
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      [id]: Math.max((prevCounts[id] || 1) - 1, 1),
+    }));
   };
-    
-    
+
   return (
-    <>
-      <div className={Styles.plusminusicon}>
-        <FontAwesomeIcon onClick={decrement} icon={faMinus} />
-         {state}
-        <FontAwesomeIcon onClick={increment} icon={faPlus} />
-      </div>
-    </>
+    <div className={Styles.plusminusicon}>
+      <FontAwesomeIcon onClick={handleDecrement} icon={faMinus} />
+      {counts[id] || 1}
+      <FontAwesomeIcon onClick={handleIncrement} icon={faPlus} />
+    </div>
   );
 };
 

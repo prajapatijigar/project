@@ -77,4 +77,7 @@
     text-overflow: ellipsis; /* Adds ellipsis (...) for overflowed text */
     margin-bottom: 10px; /* Bottom space */
 }
+.loadingspan{
+    text-align: center; 
+}
     

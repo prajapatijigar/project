@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
@@ -15,12 +15,14 @@ const ProductDetail = () => {
   const { product, setProduct } = useContext(CartContext); // Using the context
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { slugState, setSlugState } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
         setProduct(response.data);
+        setSlugState(response.data.category);
       } catch (error) {
         console.error("There was an error fetching the data!", error);
         setError("There was an error fetching the data!");
@@ -63,13 +65,15 @@ const ProductDetail = () => {
         </div>
         <div className={Styles.detailscardtextbody}>
           <h1>{product.title}</h1>
-          <span>{product.category}</span>
+          <Link to={`/categories/${slugState}`}>
+            <span>{product.category}</span>
+          </Link>
           <span>{star(product.rating.rate)}</span>
           <p>${product.price} <span>try</span></p>
           <div className={Styles.IncrementBtn}>
-            <IncreDecre />
+            <IncreDecre id={product.id} /> {/* Pass the id to the IncreDecre component */}
             <Button product={product} />
-          </div>
+          </div>  
         </div>
       </div>
       <div className={Styles.secondpart}>

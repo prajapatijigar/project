@@ -47,3 +47,44 @@
     width: 5px;
     height: 5px;
  }
+ .menucartitem{
+     display: flex;
+     justify-content: space-between;
+     padding: 5px;
+     }
+.menucartitem h4{
+     font-size: 15px;
+ }
+ .minusbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: #da0037;
+    color: white;
+    cursor: pointer;
+ }
+ .totalamout{
+     position: fixed;
+     text-transform: uppercase;
+     width: 100%;
+     bottom: 0;
+     padding: 10px 0;
+     border-top: 1px solid #e3e3e3;
+     /* color: ; */
+     background-color: white;
+ }
+ .totalamoutbtn{
+     display: flex;
+     justify-content: center;
+ }
+ .totalamoutbtn button{
+      text-transform: capitalize;
+      color: white;
+      font-size: 20px;
+      border: none;
+      padding: 5px 10px;
+      background-color: #019267;
+ }
